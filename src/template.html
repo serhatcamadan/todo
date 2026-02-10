@@ -1,13 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Webpack Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1>Hello World</h1>
-</div>
+  <div class="app">
+    <aside class="sidebar">
+      <h1 class="sidebar-title">Todo</h1>
+      <button type="button" class="btn btn-new-project" aria-label="New project">+ New project</button>
+      <nav class="projects-list" aria-label="Projects"></nav>
+    </aside>
+    <main class="main">
+      <header class="main-header">
+        <h2 class="current-project-name">Inbox</h2>
+        <button type="button" class="btn btn-add-todo">Add todo</button>
+      </header>
+      <ul class="todo-list" aria-label="Todos"></ul>
+    </main>
+    <div class="todo-detail-overlay" id="todo-detail-overlay" aria-hidden="true">
+      <div class="todo-detail-panel" role="dialog" aria-labelledby="todo-detail-title">
+        <div class="todo-detail-header">
+          <h3 id="todo-detail-title">Todo details</h3>
+          <button type="button" class="btn btn-close-detail" aria-label="Close">&times;</button>
+        </div>
+        <form class="todo-detail-form">
+          <label>
+            <span>Title</span>
+            <input type="text" name="title" required>
+          </label>
+          <label>
+            <span>Description</span>
+            <textarea name="description" rows="2"></textarea>
+          </label>
+          <label>
+            <span>Due date</span>
+            <input type="date" name="dueDate">
+          </label>
+          <label>
+            <span>Priority</span>
+            <select name="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+          <label>
+            <span>Notes</span>
+            <textarea name="notes" rows="3"></textarea>
+          </label>
+          <fieldset class="checklist-fieldset">
+            <legend>Checklist</legend>
+            <ul class="checklist-list"></ul>
+            <div class="checklist-add">
+              <input type="text" placeholder="Add item" class="checklist-input">
+              <button type="button" class="btn btn-add-checklist-item">Add</button>
+            </div>
+          </fieldset>
+          <div class="todo-detail-actions">
+            <button type="button" class="btn btn-delete-todo btn-danger">Delete todo</button>
+            <button type="submit" class="btn btn-save-todo">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-overlay" id="add-todo-modal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-labelledby="add-todo-title">
+        <h3 id="add-todo-title">New todo</h3>
+        <form class="add-todo-form">
+          <label>
+            <span>Title</span>
+            <input type="text" name="title" required placeholder="What to do?">
+          </label>
+          <label>
+            <span>Due date</span>
+            <input type="date" name="dueDate">
+          </label>
+          <label>
+            <span>Priority</span>
+            <select name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-overlay" id="new-project-modal" aria-hidden="true">
+      <div class="modal" role="dialog" aria-labelledby="new-project-title">
+        <h3 id="new-project-title">New project</h3>
+        <form class="new-project-form">
+          <label>
+            <span>Project name</span>
+            <input type="text" name="name" required placeholder="e.g. Work">
+          </label>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
